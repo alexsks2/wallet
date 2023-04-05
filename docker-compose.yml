@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  wallet-db:
+    image: postgres:latest
+    container_name: wallet-db
+    environment:
+      POSTGRES_DB: "walletdb"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+    ports:
+      - "5432:5432"
+  wallet-be:
+    build:
+      context: ./wallet-be
+      dockerfile: Dockerfile
+    container_name: wallet-be
+    environment:
+      DB_URL: "jdbc:postgresql://wallet-db:5432/walletdb"
+      DB_USER: "root"
+      DB_PASS: "root"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - wallet-db
+  wallet-ui:
+    image: wallet-ui:latest
+    container_name: wallet-ui
+    build:
+      context: ./wallet-ui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - wallet-be
+
+networks:
+  web:
+    name: web

@@ -1,0 +1,17 @@
+.App {
+  font-family: Avenir;
+}
+
+.card-size {
+    width: 500px;
+	border-radius: 8px;
+	box-shadow: 0px 0px 8px #ccc;
+	color: #253b56;
+	margin: 12px 0px;
+}
+
+.login-wrapper {
+    width: 350px;
+    margin: auto;
+	color: #253b56;
+}

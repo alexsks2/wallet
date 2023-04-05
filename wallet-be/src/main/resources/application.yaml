@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/walletdb}
+    username: ${DB_USER:root}
+    password: ${DB_PASS:root}
+
+server:
+  port: 8080
+
+
+token:
+  secret: 'secretwalletkey'
+
